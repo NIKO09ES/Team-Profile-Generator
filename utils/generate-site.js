@@ -1,8 +1,22 @@
 const fs = require('fs');
+const {generators, generatePage} = require('../src/page-template')
 
 const writeFile = fileContent => {
+    
+    const generateHtml = () => {
+        let html = '';
+        fileContent.forEach(element => {
+           let x = generators[element.constructor.name.toLowerCase()](element)
+           html += x;
+        });
+        return generatePage(html);
+    }
+    const content = generateHtml();
+    console.log(content);
     return new Promise((resolve, reject) => {
-        fs.writeFile('./dist/index.html', fileContent, err => {
+        
+        fs.writeFile('./dist/index.html', content, err => {
+            
             // if there's an error, reject the Promise and send the error to the Promise's `.catch()` method
             if (err) {
                 reject(err);

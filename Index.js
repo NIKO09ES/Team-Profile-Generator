@@ -3,10 +3,12 @@ const inquirer = require('inquirer');
 const Manager = require('./lib/Manager');
 const Engineer = require('./lib/Engineer');
 const Intern = require('./lib/Intern');
+const Employee = require('./lib/Employee.js');
 //  arrays for the manager, engineer and intern
-managerData = [];
-engineerData = [];
-internData = [];
+const managerData = [];
+const engineerData = [];
+const internData = [];
+
 
 
 const promptManager = () => {
@@ -95,8 +97,7 @@ const promptChoice = () => {
             } else if (input.Choice === 'Intern') {
                 promptIntern();
             } else {
-                console.log('ok')
-                // writeFile();
+                writeFile([...managerData, ...engineerData, ...internData]);
             }
         });
 }
@@ -167,6 +168,7 @@ const promptEngineer = () => {
         const engineer = new Engineer(name, id, email, github);
         console.table(engineer);
         engineerData.push(engineer);
+        // console.table(engineerData);
         promptChoice();
     })
 };
