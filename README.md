@@ -27,6 +27,7 @@
   
   Follow the instructions in the following video. 
   
+  [![Watch the video](./dist/img/team.PNG)](https://drive.google.com/file/d/1vxPvFIMkw2UHcBPnty53aPvFbT4tvPVx/view)
   
   ## License
   

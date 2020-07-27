@@ -2,16 +2,7 @@
 Body {
     background-color: azure;
 }
-h1 {
-    box-shadow: 0 0 10px rgb(243, 243, 243);
-    border-radius: 15px;
-    background-color: rgba(56, 252, 121, 0.589);
-    padding: 20px;
-    color: var(#546e7a);
-    border: solid 6px var(#546e7a);
-    width: 80%;
-    margin: 3.5%;
-}
+
 /* Card Style */
 
 .card {
