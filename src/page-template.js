@@ -1,6 +1,7 @@
 
 
 module.exports.generators = {
+  // create manager card
   manager: ({ name, id, email, officeNumber }) => {
     return `
           <div class="card col-3 border border-info" style="width: 18rem;">
@@ -12,13 +13,13 @@ module.exports.generators = {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email}</li>
+                    <a class="list-group-item" href='mailto:${email}'>Email: ${email}</a>
                     <li class="list-group-item">Office Number: ${officeNumber}</li>
                 </ul>
               </div>
       `;
   },
-  // Create the project section
+  // Create engineer card
   engineer: ({ name, id, email, github }) => {
     return `
           <div class="card col-3 border border-info" style="width: 18rem;">
@@ -30,18 +31,16 @@ module.exports.generators = {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email}</li>
-                    <li class="list-group-item">GitHub: ${github}</li>
+                    <a class="list-group-item" href='mailto:${email}'>Email: ${email}</a>
+                    <a class="list-group-item" href="https://github.com/${github}" target="_blank">GitHub: ${github}</a>
                 </ul>
               </div>
       `;
   },
 
-  // create the about section
+  // create intern card
   intern: ({ name, id, email, school }) => {
     return `
-        <section class="my-3" id="intern">
-          <div class="flex-row justify-space-between">
           <div class="card  col-3 border border-info" style="width: 18rem;">
                 <div class="card-header p-3 mb-2 bg-primary text-white text-center">
                     <h2>${name}</h2>
@@ -51,16 +50,14 @@ module.exports.generators = {
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">ID: ${id}</li>
-                    <li class="list-group-item">Email: ${email}</li>
+                    <a class="list-group-item" href='mailto:${email}'>Email: ${email}</a>
                     <li class="list-group-item">School: ${school}</li>
                 </ul>
               </div>
-          </div>
-        </section>
       `;
   }
 }
-// destructure page data by section
+// page data 
 
 module.exports.generatePage = html => {
   return `

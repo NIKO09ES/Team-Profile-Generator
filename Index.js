@@ -10,9 +10,10 @@ const engineerData = [];
 const internData = [];
 
 
-
+// prompt Manager Questions
 const promptManager = () => {
     return inquirer.prompt([
+        // question name
         {
             type: 'input',
             name: 'name',
@@ -26,6 +27,7 @@ const promptManager = () => {
                 }
             }
         },
+        // question id
         {
             type: 'input',
             name: 'id',
@@ -39,6 +41,7 @@ const promptManager = () => {
                 }
             }
         },
+        // question email
         {
             type: 'input',
             name: 'email',
@@ -52,6 +55,7 @@ const promptManager = () => {
                 }
             }
         },
+        // question office number
         {
             type: 'input',
             name: 'officeNumber',
@@ -66,23 +70,25 @@ const promptManager = () => {
             }
         },
     ])
+    // push the info to managerData array variable
     .then(input => {
         const {name, id, email, officeNumber} = input;
 
         const manager = new Manager(name, id, email, officeNumber);
         console.table(manager);
         managerData.push(manager);
+        // call fuction choice next emplooyee or done
         promptChoice();
     })
 };
-
+// fuction choice next emplooyee or done
 const promptChoice = () => {
     console.log(`
     ==================
     Add a New Employee
     ==================
     `);
-
+    // list with the options
     return inquirer.prompt([
         {
             type: 'list',
@@ -93,22 +99,27 @@ const promptChoice = () => {
     ])
         .then(input => {
             if (input.Choice === 'Engineer') {
+                // if the user select engineer call promptEngineer
                 promptEngineer();
             } else if (input.Choice === 'Intern') {
+                // if the user select intern call promptInternt
                 promptIntern();
             } else {
+                // if the user select Done call writeFile
                 writeFile([...managerData, ...engineerData, ...internData]);
             }
         });
 }
-
+// fuction promptEngineer 
 const promptEngineer = () => {
     console.log(`
     ==================
     Add a New Engineer
     ==================
     `);
+    // questions
     return inquirer.prompt([
+        // question name
         {
             type: 'input',
             name: 'name',
@@ -122,6 +133,7 @@ const promptEngineer = () => {
                 }
             }
         },
+        // question id
         {
             type: 'input',
             name: 'id',
@@ -135,6 +147,7 @@ const promptEngineer = () => {
                 }
             }
         },
+        // question Email
         {
             type: 'input',
             name: 'email',
@@ -148,6 +161,7 @@ const promptEngineer = () => {
                 }
             }
         },
+        // question GitHub Username
         {
             type: 'input',
             name: 'github',
@@ -162,17 +176,18 @@ const promptEngineer = () => {
             }
         },
     ])
+    // push the info to engineerData array variable
     .then(input => {
         const {name, id, email, github} = input;
 
         const engineer = new Engineer(name, id, email, github);
         console.table(engineer);
         engineerData.push(engineer);
-        // console.table(engineerData);
+        // call choice employee option
         promptChoice();
     })
 };
-
+// fuction promptIntern
 const promptIntern = () => {
     console.log(`
     ==================
@@ -180,6 +195,7 @@ const promptIntern = () => {
     ==================
     `);
     return inquirer.prompt([
+        // question name
         {
             type: 'input',
             name: 'name',
@@ -193,6 +209,7 @@ const promptIntern = () => {
                 }
             }
         },
+        // question ID
         {
             type: 'input',
             name: 'id',
@@ -206,6 +223,7 @@ const promptIntern = () => {
                 }
             }
         },
+        // question email
         {
             type: 'input',
             name: 'email',
@@ -219,6 +237,7 @@ const promptIntern = () => {
                 }
             }
         },
+        // question school
         {
             type: 'input',
             name: 'school',
@@ -233,12 +252,14 @@ const promptIntern = () => {
             }
         },
     ])
+    // push the info to InternData array variable
     .then(input => {
         const {name, id, email, school} = input;
 
         const intern = new Intern(name, id, email, school);
         console.table(intern);
         internData.push(intern);
+        // call choice function
         promptChoice();
     })
 };
@@ -246,20 +267,3 @@ const promptIntern = () => {
 promptManager()
 
 module.exports = {managerData, engineerData, internData}
-//   .then(promptProject)
-//   .then(portfolioData => {
-//     return generatePage(portfolioData);
-//   })
-//   .then(pageHTML => {
-//     return writeFile(pageHTML);
-//   })
-//   .then(writeFileResponse => {
-//     console.log(writeFileResponse);
-//     return copyFile();
-//   })
-//   .then(copyFileResponse => {
-//     console.log(copyFileResponse);
-//   })
-//   .catch(err => {
-//     console.log(err);
-//   });
