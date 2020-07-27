@@ -78,7 +78,7 @@ module.exports.generatePage = html => {
     <body>
       <header>
         <div class="flex-row justify-space-between py-3">
-          <h1 class="page-title text-center text-light bg-dark py-2 px-3">My Team</h1>
+          <h1 class="h1 page-title text-center text-light bg-dark py-2 px-3">My Team</h1>
         </div>
       </header>
       <main class="container my-5">
@@ -87,7 +87,7 @@ module.exports.generatePage = html => {
         </div>  
       </main>
       <footer class="container text-center py-3">
-        <h3 class="text-dark">&copy; 2020 by Nicolas Esquivel</h3>
+        <h3 class="text-dark">&copy; 2020 Team Profile Generator by Nicolas Esquivel</h3>
       </footer>
     </body>
     </html>

@@ -2,10 +2,12 @@
 Body {
     background-color: azure;
 }
+
 /* Card Style */
 
 .card {
     margin-left: 10px;
+    margin-top: 10px;
 }
 h2 {
     font-size: 20px;
